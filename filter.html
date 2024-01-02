@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
+<style>
+    *{
+        margin: 0%;
+    }
+    ul{
+        display: flex;
+    }
+    ul li{
+        list-style: none;
+        margin-inline: 5px;
+        margin: 20px;
+    }
+    .product{
+        display: flex;
+    }
+    .itembox{
+        position: relative;
+    }
+    .itembox img{
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+    .active{
+        color: blue;
+    }
+
+</style>
+</head>
+<body>
+
+<ul>
+    <li class="list active" data-filters="All">All</li>
+    <li class="list" data-filters="Watch">Watch</li>
+    <li class="list" data-filters="Mobile">Mobile</li>
+    <li class="list" data-filters="Cars">Cars</li>
+</ul>
+<div class="product">
+    <img src="./images/pexels-cesar-perez-733745.jpg" class="itembox Cars" alt="" width="300px">
+    <img src="./images/pexels-yugdas-manandhar-2155319.jpg" class="itembox Watch" alt="" width="300px">
+    <img src="./images/pexels-vlad-chețan-3121979.jpg" class="itembox Mobile" alt="" width="300px">
+</div>
+
+<script>
+$(document).ready(function() {
+    $('.list').click(function() {
+        let value = $(this).attr('data-filters')
+    
+
+        if (value=="All") {
+            $('.itembox').show(1000)
+        } else{
+            $('.itembox').not('.'+value).hide(1000)
+            $('.itembox.'+value).show(1000)
+        }
+        $(this).addClass('.active').siblings().removeClass('.active')
+    })
+})
+
+</script>
+    
+</body>
+</html>
